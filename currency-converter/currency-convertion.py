@@ -1,3 +1,4 @@
+from colorama import Style,Back,Fore
 import requests
 from pprint import pprint  # Ma'lumotlarni chiroyli formatda chiqarish uchun
 from config import URL  # URL manzilini config.py faylidan olish
@@ -14,9 +15,9 @@ def valuta(kod):
     return None                                     # Agar topilmasa, None qaytaradi
 
 # Foydalanuvchidan ma'lumot kiritishni so'rash
-summa = float(input("Miqdorni kiriting: "))
-at_valuta = input("Qaysi valyutadan convert qilmoqchisiz : ").upper()
-to_valuta = input("Qaysi valyutaga convert qilmoqchisiz : ").upper()
+summa = float(input(Fore.BLUE+Style.BRIGHT+"Miqdorni kiriting: "))
+at_valuta = input(Fore.LIGHTBLACK_EX+Style.BRIGHT+"Qaysi valyutadan convert qilmoqchisiz : ").upper()
+to_valuta = input(Fore.GREEN + Style.BRIGHT+"Qaysi valyutaga convert qilmoqchisiz : ").upper()
 
 # Funksiya call qilindi hamda valyuta kuslari olindi 
 kursni = valuta(at_valuta)
@@ -25,6 +26,6 @@ kursga = valuta(to_valuta)
 # Hisoblash 
 if kursni and kursga:                            # Agar valuyuta kurslari True qiymat qaytarsa 
     natija = (summa / kursni) * kursga            # Uni kursini hisoblayamiz 
-    print(f"{summa} {at_valuta} = {natija:.2f} {to_valuta}")    # Natija chiqarildi 
+    print(Fore.YELLOW+f"{summa} {at_valuta} = {natija:.2f} {to_valuta}")    # Natija chiqarildi 
 else:
-    print("Kiritilgan valyuta kodi noto'g'ri!")   
+    print(Fore.RED+"Kiritilgan valyuta kodi noto'g'ri!")   
